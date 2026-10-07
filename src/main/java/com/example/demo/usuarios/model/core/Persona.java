@@ -1,20 +1,20 @@
-package com.example.demo.usuarios.model;
+package com.example.demo.usuarios.model.core;
 
-public abstract class Usuario {
-
+public abstract class Persona {
+    private int id;
     private String nombre;
     private int documento;
     private int edad;
+
     private String telefono;
 
-    public Usuario(String nombre, int documento, int edad, String telefono) {
+    public Persona(String nombre, int documento, int edad) {
         this.nombre = nombre;
         this.documento = documento;
         this.edad = edad;
         this.telefono = telefono;
     }
 
-    public abstract void mostrarInformacion();
 
     public String getNombre() {
         return nombre;

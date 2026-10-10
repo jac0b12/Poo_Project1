@@ -21,8 +21,32 @@ public class Turno {
         this.fechaGeneracion = fechaGeneracion;
     }
 
-    public class llamar(Asesor asesor){
-
+    public void llamar(Asesor asesor){
+        estado = EstadoTurno.LLAMADO;
+        this.fechaLlamado = LocalDateTime.now();
     }
+    public void cancelar(Asesor asesor){
+        estado = EstadoTurno.CANCELADO;
+    }
+    public void marcarNoAtendido(Asesor asesor){
+        estado = EstadoTurno.NO_ATENDIDO;
+    }
+
+
+    //getts
+    public String getNumero() { return numero; }
+    public void setNumero(String numero) { this.numero = numero; }
+
+    public Prioridad getPrioridad() { return prioridad; }
+    public void setPrioridad(Prioridad prioridad) { this.prioridad = prioridad; }
+
+    public EstadoTurno getEstado() { return estado; }
+    public void setEstado(EstadoTurno estado) { this.estado = estado; }
+
+    public LocalDateTime getFechaGeneracion() { return fechaGeneracion; }
+    public void setFechaGeneracion(LocalDateTime fechaGeneracion) { this.fechaGeneracion = fechaGeneracion; }
+
+    public LocalDateTime getFechaLlamado() { return fechaLlamado; }
+    public void setFechaLlamado(LocalDateTime fechaLlamado) { this.fechaLlamado = fechaLlamado; }
 
 }

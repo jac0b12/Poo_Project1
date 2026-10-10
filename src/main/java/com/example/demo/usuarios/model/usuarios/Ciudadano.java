@@ -17,6 +17,11 @@ public class Ciudadano extends Persona {
         this.solicitud = new ArrayList<>();
     }
 
-
+    public String getTelefono() {
+        return telefono;
+    }
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
 }

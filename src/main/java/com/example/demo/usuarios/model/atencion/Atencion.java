@@ -18,4 +18,6 @@ public class Atencion {
         this.observaciones = observaciones;
         this.resultado = resultado;
     }
+
+
 }

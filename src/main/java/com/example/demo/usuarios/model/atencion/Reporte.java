@@ -1,27 +1,46 @@
 package com.example.demo.usuarios.model.atencion;
 
+import com.example.demo.usuarios.model.solicitudes.Solicitud;
+import com.example.demo.usuarios.model.solicitudes.TipoTramite;
+import com.example.demo.usuarios.model.turnos.Turno;
+
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Reporte {
+    private int cantTurnos;
+    private List<String> listaTramites = new ArrayList<>();
 
+    public Reporte( int cantTurnos, List<String> listaTramites) {
 
-
+        this.cantTurnos = cantTurnos;
+        this.listaTramites = listaTramites;
+    }
     /*
     public Duration tiempoPromedioEspera(){
 
     }
 
-    int turnosAtendidos(){
 
-    }
 
     list tramitesFrecuentes(){
 
     }
 
-    Reporte getReporte(){
-        return this;
-    }
     */
+
+    public void sumaCantidadTurnos(){
+        cantTurnos = cantTurnos + 1;
+    }
+
+    public Reporte getReporte() {
+        return new Reporte(cantTurnos, listaTramites);
+    }
+
+    public List<String> tramitesFrecuentes() {
+        return listaTramites;
+    }
+
 
 }

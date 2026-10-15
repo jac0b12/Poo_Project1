@@ -1,20 +1,33 @@
 package com.example.demo.usuarios.service;
+import com.example.demo.usuarios.exception.TurnoYaAtendidoException;
 import com.example.demo.usuarios.model.turnos.EstadoTurno;
 import com.example.demo.usuarios.model.turnos.Prioridad;
 import com.example.demo.usuarios.model.turnos.Turno;
 import com.example.demo.usuarios.model.solicitudes.Solicitud;
 import com.example.demo.usuarios.model.usuarios.Asesor;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TurnoService {
-    private List<Turno> listaTurnos = new ArrayList<>();
 
-    public Turno generarTurno(Solicitud solicitud, Prioridad prioridad) {
+@Service
+public class TurnoService {
+    private Turno turno;
+    private List<Turno> listaTurnos = new ArrayList<>();
+    private EstadoTurno estado;
+
+
+
+
+    public Turno generarTurno(Solicitud solicitud, Prioridad prioridad) throws TurnoYaAtendidoException {
         if (solicitud == null) {
             throw new IllegalArgumentException("La solicitud no puede ser nula para generar un turno.");
+        }
+
+        if(turno.getEstado() == EstadoTurno.EN_ATENCION){
+            throw new TurnoYaAtendidoException("El espacio ya esta reservado");
         }
 
         String numeroTurno = "T-" + (listaTurnos.size() + 1);
@@ -24,26 +37,25 @@ public class TurnoService {
         return nuevoTurno;
     }
 
-    public void llamarTurno(String numeroTurno, Asesor asesor) {
-        Turno turno = buscarTurnoPorNumero(numeroTurno);
-        if (turno != null && turno.getEstado() == EstadoTurno.EN_ESPERA) {
-            turno.llamar(asesor);
-        } else {
-            throw new IllegalStateException("El turno no existe o no está en estado pendiente.");
-        }
-    }
-
     public void cancelarTurno(String numeroTurno) {
-        Turno turno = buscarTurnoPorNumero(numeroTurno);
         if (turno != null) {
-            turno.cancelar();
+            estado = EstadoTurno.CANCELADO;
+        } else {
+            throw new IllegalArgumentException("El turno con número " + numeroTurno + " no fue encontrado.");
         }
     }
 
-    private Turno buscarTurnoPorNumero(String numero) {
-        return listaTurnos.stream()
-                .filter(t -> t.getNumero().equals(numero))
-                .findFirst()
-                .orElse(null);
+
+    public void llamar(Asesor asesor){
+        estado = EstadoTurno.LLAMADO;
+        turno.setFechaLlamado(LocalDateTime.now());
+    }
+
+    public void marcarNoAtendido(Asesor asesor){
+        estado = EstadoTurno.NO_ATENDIDO;
+    }
+
+    public List<Turno> getListaTurnos() {
+        return listaTurnos;
     }
 }

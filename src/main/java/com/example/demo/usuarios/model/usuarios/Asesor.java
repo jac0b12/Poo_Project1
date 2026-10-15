@@ -2,12 +2,13 @@ package com.example.demo.usuarios.model.usuarios;
 
 import com.example.demo.usuarios.model.atencion.Ventanilla;
 import com.example.demo.usuarios.model.turnos.Turno;
+import com.example.demo.usuarios.service.TurnoService;
 
 public class Asesor extends Empleado{
     private Coordinador coordinador;
     private Ventanilla ventanilla;
     private boolean disponible;
-    private Turno turno;
+    private TurnoService turnoService;
 
     public Asesor(String nombre, int documento, int edad, String usuario, String clave,Coordinador coordinador,Ventanilla ventanilla){
         super(nombre, documento, edad, usuario, clave);
@@ -16,10 +17,11 @@ public class Asesor extends Empleado{
         this.ventanilla = ventanilla;
     }
 
-    public Turno llamarSiguiente() {
-        if (this.turno != null) {
-            this.turno.llamar(this); // Llama al método de la clase Turno pasándose a sí mismo (this)
-        }
-        return this.turno; // Retorna el objeto turno actualizado
+    public Ventanilla getVentanilla() {
+        return ventanilla;
+    }
+
+    public void setVentanilla(Ventanilla ventanilla) {
+        this.ventanilla = ventanilla;
     }
 }

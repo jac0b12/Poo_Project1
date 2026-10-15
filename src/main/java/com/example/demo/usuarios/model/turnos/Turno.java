@@ -21,16 +21,7 @@ public class Turno {
         this.fechaGeneracion = fechaGeneracion;
     }
 
-    public void llamar(Asesor asesor){
-        estado = EstadoTurno.LLAMADO;
-        this.fechaLlamado = LocalDateTime.now();
-    }
-    public void cancelar(Asesor asesor){
-        estado = EstadoTurno.CANCELADO;
-    }
-    public void marcarNoAtendido(Asesor asesor){
-        estado = EstadoTurno.NO_ATENDIDO;
-    }
+
 
 
     //getts

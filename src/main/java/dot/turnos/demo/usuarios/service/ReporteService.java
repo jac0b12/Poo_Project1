@@ -17,10 +17,10 @@ public class ReporteService {
     }
 
     public Reporte generarReporte() {
-        // Obtenemos los turnos desde el servicio de turnos
+
         List<Turno> turnos = turnoService.getListaTurnos();
 
-        // Calculamos los turnos atendidos
+
         int turnosAtendidos = (int) turnos.stream()
                 .filter(t -> t.getEstado() == EstadoTurno.FINALIZADO)
                 .count();

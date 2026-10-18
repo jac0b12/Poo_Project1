@@ -1,13 +1,29 @@
 package dot.turnos.demo.usuarios.model.turnos;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "turno")
 public class Turno {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+
     private String numero;
+
     private Prioridad prioridad;
     private EstadoTurno estado;
     private LocalDateTime fechaLlamado;
     private LocalDateTime fechaGeneracion;
+
+
+    public Turno(){
+
+    }
 
     public Turno(String numero, Prioridad prioridad, EstadoTurno estado, LocalDateTime fechaLlamado, LocalDateTime fechaGeneracion){
         this.numero = numero;

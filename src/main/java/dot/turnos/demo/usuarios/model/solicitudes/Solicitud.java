@@ -1,17 +1,30 @@
 package dot.turnos.demo.usuarios.model.solicitudes;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "solicitud")
 public class Solicitud {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private LocalDateTime fechaRegistro;
     private String motivo;
+
+    @ManyToOne
+    @JoinColumn(name = "tipo_tramite_id")
     private TipoTramite tipoTramite;
 
+    public Solicitud(){
 
-    public Solicitud(int id,TipoTramite tipoTramite , String motivo, LocalDateTime fechaRegistro) {
-        this.id = id;
+    }
+
+
+    public Solicitud(TipoTramite tipoTramite , String motivo, LocalDateTime fechaRegistro) {
         this.motivo = motivo;
         this.fechaRegistro = LocalDateTime.now();
         this.tipoTramite = tipoTramite;
@@ -20,12 +33,11 @@ public class Solicitud {
 
 
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
+
+    public void setId(long id) {
         this.id = id;
     }
+
 
     public LocalDateTime getFechaRegistro() {
         return fechaRegistro;

@@ -1,10 +1,21 @@
 package dot.turnos.demo.usuarios.model.solicitudes;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tipos_tramite")
 public class TipoTramite {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private String nombre;
     private int tiempoEstimadoMin;
 
+    public TipoTramite(){
+
+    }
 
     public TipoTramite(int id ,String nombre,int tiempoEstimadoMin){
         this.id = id;
@@ -13,10 +24,10 @@ public class TipoTramite {
 
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -27,9 +27,6 @@ public class TurnoService {
             throw new IllegalArgumentException("La solicitud no puede ser nula para generar un turno.");
         }
 
-        if(turno.getEstado() == EstadoTurno.EN_ATENCION){
-            throw new TurnoYaAtendidoException("El espacio ya esta reservado");
-        }
 
         String numeroTurno = "T-" + (listaTurnos.size() + 1);
         Turno nuevoTurno = new Turno(numeroTurno, prioridad, EstadoTurno.EN_ESPERA, LocalDateTime.now(), null);

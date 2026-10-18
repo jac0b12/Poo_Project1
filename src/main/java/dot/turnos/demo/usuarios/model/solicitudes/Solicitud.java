@@ -1,5 +1,6 @@
 package dot.turnos.demo.usuarios.model.solicitudes;
 
+import dot.turnos.demo.usuarios.model.usuarios.Ciudadano;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -18,6 +19,10 @@ public class Solicitud {
     @ManyToOne
     @JoinColumn(name = "tipo_tramite_id")
     private TipoTramite tipoTramite;
+
+    @ManyToOne
+    @JoinColumn(name = "ciudadano_id")
+    private Ciudadano ciudadano;
 
     public Solicitud(){
 

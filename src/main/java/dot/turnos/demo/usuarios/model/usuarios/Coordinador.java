@@ -7,9 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "coordinadores")
 public class Coordinador extends Empleado{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
 
     public Coordinador() {
         super();
@@ -19,13 +17,7 @@ public class Coordinador extends Empleado{
         super(nombre, documento, edad, usuario, clave, telefono);
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
 
 }

@@ -8,9 +8,7 @@ import jakarta.persistence.*;
 @Table(name="asesores")
 public class Asesor extends Empleado{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+
 
     @ManyToOne
     @JoinColumn(name = "coordinador_id")
@@ -37,13 +35,6 @@ public class Asesor extends Empleado{
     }
 
     // Getters y Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Coordinador getCoordinador() {
         return coordinador;

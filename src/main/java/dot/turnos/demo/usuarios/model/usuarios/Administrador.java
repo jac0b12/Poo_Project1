@@ -6,9 +6,6 @@ import jakarta.persistence.*;
 @Table(name = "administrador")
 public class Administrador extends Empleado{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     public Administrador(){
         super();

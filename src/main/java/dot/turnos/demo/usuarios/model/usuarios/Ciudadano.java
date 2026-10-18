@@ -11,12 +11,11 @@ import java.util.List;
 @Table(name = "ciudadano")
 public class Ciudadano extends Persona {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    private String telefono;
-    private List<Solicitud> solicitud;
+
+
+    @OneToMany(mappedBy = "ciudadano", cascade = CascadeType.ALL)
+    private List<Solicitud> solicitudes;
 
     public Ciudadano(){
         super();
@@ -25,15 +24,16 @@ public class Ciudadano extends Persona {
 
     public Ciudadano(String nombre, int documento, int edad, String telefono) {
         super(nombre, documento, edad, telefono);
-        this.telefono = telefono;
-        this.solicitud = new ArrayList<>();
+
+        this.solicitudes = new ArrayList<>();
     }
 
-    public String getTelefono() {
-        return telefono;
+    public List<Solicitud> getSolicitudes() {
+        return solicitudes;
     }
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+
+    public void setSolicitudes(List<Solicitud> solicitudes) {
+        this.solicitudes = solicitudes;
     }
 
 }

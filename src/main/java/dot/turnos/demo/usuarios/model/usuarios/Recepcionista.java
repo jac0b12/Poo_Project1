@@ -6,9 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "recepcionista")
 public class Recepcionista extends Empleado{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
 
     public Recepcionista(){
         super();

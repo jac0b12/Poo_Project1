@@ -2,9 +2,14 @@ package dot.turnos.demo.usuarios.model.usuarios;
 
 import dot.turnos.demo.usuarios.model.atencion.Ventanilla;
 import dot.turnos.demo.usuarios.service.TurnoService;
+import jakarta.persistence.*;
+
 
 public class Asesor extends Empleado{
+
+    private long id;
     private Coordinador coordinador;
+
     private Ventanilla ventanilla;
     private boolean disponible;
     private TurnoService turnoService;

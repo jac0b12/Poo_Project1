@@ -8,7 +8,7 @@ public abstract class Persona {
 
     private String telefono;
 
-    public Persona(String nombre, int documento, int edad) {
+    public Persona(String nombre, int documento, int edad, String telefono) {
         this.nombre = nombre;
         this.documento = documento;
         this.edad = edad;

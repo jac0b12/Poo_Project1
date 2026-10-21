@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class TurnoService {
     private Turno turno;
-    private List<Turno> listaTurnos = new ArrayList<>();
+    private int numero = 0;
     private EstadoTurno estado;
 
 
@@ -28,10 +28,10 @@ public class TurnoService {
         }
 
 
-        String numeroTurno = "T-" + (listaTurnos.size() + 1);
+        String numeroTurno = "T-" + (numero + 1);
         Turno nuevoTurno = new Turno(numeroTurno, prioridad, EstadoTurno.EN_ESPERA, LocalDateTime.now(), null);
 
-        listaTurnos.add(nuevoTurno);
+
         return nuevoTurno;
     }
 
@@ -53,7 +53,5 @@ public class TurnoService {
         estado = EstadoTurno.NO_ATENDIDO;
     }
 
-    public List<Turno> getListaTurnos() {
-        return listaTurnos;
-    }
+
 }

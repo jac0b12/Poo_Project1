@@ -3,6 +3,7 @@ package dot.turnos.demo.usuarios.service;
 import dot.turnos.demo.usuarios.model.atencion.Reporte;
 import dot.turnos.demo.usuarios.model.turnos.EstadoTurno;
 import dot.turnos.demo.usuarios.model.turnos.Turno;
+import dot.turnos.demo.usuarios.repository.Turnos;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,8 @@ import java.util.List;
 @Service
 public class ReporteService {
     private final TurnoService turnoService;
+    private  Turno turno;
+    private int contador;
 
     public ReporteService(TurnoService turnoService) {
         this.turnoService = turnoService;
@@ -18,17 +21,16 @@ public class ReporteService {
 
     public Reporte generarReporte() {
 
-        List<Turno> turnos = turnoService.getListaTurnos();
 
+        if(turno.getEstado() == EstadoTurno.FINALIZADO){
+            contador = contador + 1;
+        }
 
-        int turnosAtendidos = (int) turnos.stream()
-                .filter(t -> t.getEstado() == EstadoTurno.FINALIZADO)
-                .count();
 
 
         List<String> frecuentes = List.of("Renovación de Cédula", "Certificado de Residencia");
 
-        return new Reporte(turnosAtendidos, frecuentes);
+        return new Reporte(contador, frecuentes);
     }
 
 }

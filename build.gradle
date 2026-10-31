@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '4.1.1'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id 'info.solidsoft.pitest' version '1.19.0'
 }
 
 group = 'dot.turnos'
@@ -25,8 +26,21 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
+	pitest 'org.pitest:pitest-junit5-plugin:1.2.1'
 }
+
+pitest {
+	pitestVersion = '1.19.0'
+	junit5PluginVersion = '1.2.1'
+
+	targetClasses = ['dot.turnos.*'] // Ajusta al paquete raíz de tu código
+	targetTests = ['dot.turnos.*']   // Ajusta al paquete de tus tests
+
+	threads = 4
+	outputFormats = ['HTML']
+	timestampedReports = false
+}
+
 
 tasks.named('test') {
 	useJUnitPlatform()

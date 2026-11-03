@@ -25,6 +25,8 @@ public class TurnoService {
     public Turno generarTurno(Solicitud solicitud, Prioridad prioridad) throws TurnoYaAtendidoException {
         if (solicitud == null) {
             throw new IllegalArgumentException("La solicitud no puede ser nula para generar un turno.");
+        } else if(estado == EstadoTurno.EN_ATENCION){
+            throw new TurnoYaAtendidoException("El turno ya esta siendo atendido");
         }
 
 

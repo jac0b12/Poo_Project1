@@ -3,7 +3,6 @@ package dot.turnos.demo.usuarios.service;
 import dot.turnos.demo.usuarios.model.atencion.Reporte;
 import dot.turnos.demo.usuarios.model.turnos.EstadoTurno;
 import dot.turnos.demo.usuarios.model.turnos.Turno;
-import dot.turnos.demo.usuarios.repository.Turnos;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,10 +26,10 @@ public class ReporteService {
         }
 
 
-
         List<String> frecuentes = List.of("Renovación de Cédula", "Certificado de Residencia");
 
-        return new Reporte(contador, frecuentes);
+        return new Reporte(contador, frecuentes, generarReporte().getDuracion());
     }
+
 
 }

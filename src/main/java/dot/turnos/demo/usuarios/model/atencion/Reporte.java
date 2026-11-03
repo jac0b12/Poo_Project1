@@ -34,6 +34,7 @@ public class Reporte {
         cantTurnos = cantTurnos + 1;
     }
 
+
     public Reporte getReporte() {
         return new Reporte(cantTurnos, listaTramites, duracion);
     }
@@ -42,5 +43,7 @@ public class Reporte {
         return listaTramites;
     }
 
-
+    public int getCantTurnos() {
+        return cantTurnos;
+    }
 }

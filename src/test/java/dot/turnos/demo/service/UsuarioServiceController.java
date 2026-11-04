@@ -38,30 +38,30 @@ public class UsuarioServiceController {
     void Prueba_returnarturno() throws TurnoYaAtendidoException {
         TipoTramite tipoTramite = org.mockito.Mockito.mock(TipoTramite.class);
         Solicitud solicitud = new Solicitud(tipoTramite, "Motivo de prueba", LocalDateTime.now()); // Si tu constructor pide parámetros, agrégalos aquí
-        Prioridad prioridad = Prioridad.Normal;  // Cambia ALTA por un valor real de tu enum Prioridad
+        Prioridad prioridad = Prioridad.Normal;
         Turno turnoEsperado = new Turno();
 
         when(turnoService.generarTurno(solicitud, prioridad)).thenReturn(turnoEsperado);
 
-        // 2. Act (Llamar al método del controlador que queremos cubrir)
         Turno resultado = turnoController.generarTurno(solicitud, prioridad);
 
-        // 3. Assert (Verificar que no sea nulo y sea el mismo objeto para matar la mutación)
+
         assertNotNull(resultado);
         assertEquals(turnoEsperado, resultado);
         verify(turnoService).generarTurno(solicitud, prioridad);
     }
 
+    //jacobo1
     @Test
     void Prueba_consultarReporte() {
-        // 1. Arrange
+
         Reporte reporteEsperado = new Reporte(); // Si tu constructor pide parámetros, agrégalos aquí
         when(reporteService.generarReporte()).thenReturn(reporteEsperado);
 
-        // 2. Act
+
         Reporte resultado = turnoController.consultarReporte();
 
-        // 3. Assert (Mata la mutación de la línea 34)
+
         assertNotNull(resultado);
         assertEquals(reporteEsperado, resultado);
         verify(reporteService).generarReporte();

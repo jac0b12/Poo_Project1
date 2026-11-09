@@ -13,6 +13,7 @@ public class ReporteService {
     private final TurnoService turnoService;
     private  Turno turno;
     private int contador;
+    private Reporte reporte;
 
     public ReporteService(TurnoService turnoService) {
         this.turnoService = turnoService;
@@ -27,8 +28,9 @@ public class ReporteService {
 
 
         List<String> frecuentes = List.of("Renovación de Cédula", "Certificado de Residencia");
+        String duracion = "30mins"; // O la lógica real que calcule la duración
 
-        return new Reporte(contador, frecuentes, generarReporte().getDuracion());
+        return new Reporte(contador, frecuentes, duracion);
     }
 
 

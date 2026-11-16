@@ -9,7 +9,6 @@ class TurnoTest {
     @Test
     void probarConstructorVacio() {
         Turno turno = new Turno();
-
         assertNotNull(turno);
         assertNull(turno.getNumero());
         assertNull(turno.getPrioridad());

@@ -32,5 +32,9 @@ public class RecepcionistaServiceTest {
 
         recepcionistaService.cancelarTurno("T-123");
         Mockito.verify(turnoService).cancelarTurno("T-123");
+
+        System.out.println(resultado.getEstado());
     }
+
+
 }

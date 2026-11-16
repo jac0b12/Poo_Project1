@@ -9,13 +9,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 //jacobo4
 
 @ExtendWith(MockitoExtension.class)
 public class ventanillaTest {
     @Test
-    void pruebaPausa(){
+    void pruebaPausa() {
         Long id = 1L;
         String nombre = "juan";
         boolean ocupada = false;
@@ -34,10 +35,13 @@ public class ventanillaTest {
         ventanilla1.setId(2L);
         ventanilla1.setNombre("Ventura");
         ventanilla1.setOcupada(true);
+        //si es esta en true cambielo a false con terniario
+
 
         assertEquals(2L, ventanilla1.getId());
         assertEquals("Ventura", ventanilla1.getNombre());
         assertTrue(ventanilla1.isOcupada());
+
 
     }
 

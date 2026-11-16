@@ -28,6 +28,7 @@ public class ReporteTest {
         String duracion = "mucho alvrg";
 
 
+
         Reporte reporte = new Reporte(cantTurnos, listaTamites, duracion);
 
 
